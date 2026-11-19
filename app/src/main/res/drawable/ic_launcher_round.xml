@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Background gradient circle -->
+    <path
+        android:fillColor="#CC785C"
+        android:pathData="M54,0 A54,54 0 1,1 53.999,0 Z"/>
+
+    <!-- Darker outer ring hint -->
+    <path
+        android:fillColor="#B5673F"
+        android:pathData="M54,4 A50,50 0 1,1 53.999,4 Z"/>
+
+    <!-- Inner warm base -->
+    <path
+        android:fillColor="#D4896A"
+        android:pathData="M54,8 A46,46 0 1,1 53.999,8 Z"/>
+
+    <!-- Claude face: left eye dot -->
+    <path
+        android:fillColor="#1A0A00"
+        android:pathData="M38,42 A5,6 0 1,1 37.999,42 Z"/>
+
+    <!-- Claude face: right eye dot -->
+    <path
+        android:fillColor="#1A0A00"
+        android:pathData="M70,42 A5,6 0 1,1 69.999,42 Z"/>
+
+    <!-- Claude face: subtle smile arc -->
+    <path
+        android:strokeColor="#1A0A00"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M40,62 Q54,76 68,62"/>
+
+    <!-- Subtle glow overlay -->
+    <path
+        android:fillColor="#20FFFFFF"
+        android:pathData="M54,10 A30,20 0 0,1 54,10 Q70,14 72,30 Q54,22 36,30 Q38,14 54,10 Z"/>
+
+</vector>
