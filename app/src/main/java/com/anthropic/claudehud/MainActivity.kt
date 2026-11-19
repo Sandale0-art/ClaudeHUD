@@ -72,7 +72,7 @@ class MainActivity : ComponentActivity() {
                 val am = ctx.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
                 val mi = ActivityManager.MemoryInfo()
                 am.getMemoryInfo(mi)
-                temp    = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_TEMPERATURE) / 10f
+                temp    = (registerReceiver(null, android.content.IntentFilter(Intent.ACTION_BATTERY_CHANGED))?.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) ?: 0) / 10f
                 pct     = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
                 maCur   = abs(bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW) / 1000)
                 freeRam = mi.availMem / 1024 / 1024

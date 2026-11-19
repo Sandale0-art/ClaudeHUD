@@ -161,7 +161,7 @@ class OverlayService : Service() {
         val mi = android.app.ActivityManager.MemoryInfo()
         am.getMemoryInfo(mi)
 
-        val temp    = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_TEMPERATURE) / 10f
+        val temp    = (applicationContext.registerReceiver(null, android.content.IntentFilter(Intent.ACTION_BATTERY_CHANGED))?.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) ?: 0) / 10f
         val free    = mi.availMem / 1024 / 1024
         val total   = mi.totalMem / 1024 / 1024
         val maCur   = abs(bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW) / 1000)
@@ -371,7 +371,7 @@ class AodCanvas(context: Context) : android.view.View(context) {
         val ctx = context
         val bm = ctx.getSystemService(Context.BATTERY_SERVICE) as BatteryManager
         pct    = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
-        temp   = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_TEMPERATURE) / 10f
+        temp   = (applicationContext.registerReceiver(null, android.content.IntentFilter(Intent.ACTION_BATTERY_CHANGED))?.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) ?: 0) / 10f
         val raw = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW)
         maCur  = kotlin.math.abs(raw / 1000)
         bypass = bm.isCharging && maCur < 50

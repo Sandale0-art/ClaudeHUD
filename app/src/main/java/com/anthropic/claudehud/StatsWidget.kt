@@ -31,7 +31,7 @@ class StatsWidget : AppWidgetProvider() {
             val am = ctx.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
             val mi = ActivityManager.MemoryInfo().also { am.getMemoryInfo(it) }
 
-            val temp    = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_TEMPERATURE) / 10f
+            val temp    = (ctx.registerReceiver(null, android.content.IntentFilter(Intent.ACTION_BATTERY_CHANGED))?.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) ?: 0) / 10f
             val pct     = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
             val freeRam = mi.availMem / 1024 / 1024
 
